@@ -34,13 +34,27 @@
     to   { opacity: 1; transform: none; }
   }
 
-  .logo-wrapper { display: flex; justify-content: center; align-items: center; margin-bottom: 22px; }
-  .logo {
-    width: 68px; height: 68px; object-fit: cover; border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.07);
-    box-shadow: 0 4px 14px #00ff8855; background: #fff0; display: block; margin: 0 auto;
+  .brand-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 14px;
   }
-  h1 { margin: 0 0 22px; font-weight: 700; color: #18f39a; font-size: 1.8rem; }
+  .logo {
+    width: 42px; height: 42px; object-fit: cover; border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.07);
+    box-shadow: 0 3px 10px #00ff8850; background: #fff0; display: block;
+    flex: 0 0 auto;
+  }
+  h1 {
+    margin: 0;
+    font-weight: 700;
+    color: #18f39a;
+    font-size: 1.28rem;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
 
   label { display: block; text-align: left; margin-top: 16px; margin-bottom: 8px; font-weight: 600; color: #b0b0b0; font-size: 1rem; }
 
@@ -142,15 +156,15 @@
 
   @media (max-width: 400px) {
     .calculator { padding: 25px 20px; width: 100%; box-shadow: none; border-radius: 12px; }
-    h1 { font-size: 1.5rem; margin-bottom: 18px; }
     label { font-size: 0.9rem; margin-top: 14px; margin-bottom: 6px; }
     input[type="number"], .value-input { font-size: 0.95rem; padding: 10px 12px; width: 100%; }
     button, .book-link { font-size: 1.1rem; padding: 12px 0; }
     .result { font-size: 1rem; margin-top: 22px; }
     #bookmakerButtons{ gap: 3px; }
     .row { margin-top: 5px; flex-wrap: wrap; }
-    .logo { width: 50px; height: 50px; }
-    .logo-wrapper { margin-bottom: 14px; }
+    .brand-header { gap: 8px; margin-bottom: 10px; }
+    .logo { width: 36px; height: 36px; border-radius: 8px; }
+    h1 { font-size: 1.08rem; margin: 0; }
     button.copy-btn { right: 6px; top: 6px; height: 30px; min-width: 34px; }
 
     .guaranteed-row .guaranteed-label,
@@ -301,11 +315,10 @@
 </head>
 <body>
   <div class="calculator" role="main" aria-label="Arbitrázs kalkulátor">
-    <div class="logo-wrapper">
+    <div class="brand-header">
       <img src="logo21.png" alt="Logó" class="logo" />
+      <h1>Arbitrázs Kalkulátor</h1>
     </div>
-
-    <h1>Arbitrázs Kalkulátor</h1>
 
     <!-- Hidden mezők -->
     <input type="text" id="odds1Book" hidden>
