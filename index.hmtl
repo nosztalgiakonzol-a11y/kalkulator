@@ -6,7 +6,7 @@
   <title>Arbitrázs Kalkulátor – Dark Mode</title>
   <style>
   body {
-    background: linear-gradient(135deg, #121212, #1e1e1e);
+    background: linear-gradient(135deg, #131417, #1f2228);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     min-height: 100vh;
@@ -34,13 +34,27 @@
     to   { opacity: 1; transform: none; }
   }
 
-  .logo-wrapper { display: flex; justify-content: center; align-items: center; margin-bottom: 22px; }
-  .logo {
-    width: 68px; height: 68px; object-fit: cover; border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.07);
-    box-shadow: 0 4px 14px #00ff8855; background: #fff0; display: block; margin: 0 auto;
+  .brand-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 14px;
   }
-  h1 { margin: 0 0 22px; font-weight: 700; color: #00ff88; font-size: 1.8rem; }
+  .logo {
+    width: 42px; height: 42px; object-fit: cover; border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.07);
+    box-shadow: 0 3px 10px #00ff8850; background: #fff0; display: block;
+    flex: 0 0 auto;
+  }
+  h1 {
+    margin: 0;
+    font-weight: 700;
+    color: #18f39a;
+    font-size: 1.28rem;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
 
   label { display: block; text-align: left; margin-top: 16px; margin-bottom: 8px; font-weight: 600; color: #b0b0b0; font-size: 1rem; }
 
@@ -78,16 +92,16 @@
     font-weight: 700; font-size: 1.2rem; padding: 14px 0; border-radius: 12px; cursor: pointer;
   }
   button {
-    background: linear-gradient(90deg, #00c853, #009624); border: none; color: white;
+    background: linear-gradient(90deg, #00bf67, #009a54); border: none; color: white;
     box-shadow: 0 4px 15px rgba(0, 200, 83, 0.7); transition: background 0.3s ease, box-shadow 0.25s ease;
   }
-  button:hover, button:focus { background: linear-gradient(90deg, #009624, #00c853); box-shadow: 0 6px 20px rgba(0, 200, 83, 0.9); }
+  button:hover, button:focus { background: linear-gradient(90deg, #009a54, #00bf67); box-shadow: 0 6px 20px rgba(0, 191, 103, 0.85); }
 
   .book-link {
-    background: linear-gradient(90deg, #00ffcc, #00bfa5); color: #1e1e1e;
+    background: linear-gradient(90deg, #26f4cd, #15b7a0); color: #1e1e1e;
     box-shadow: 0 4px 15px rgba(0, 255, 204, 0.7); transition: background 0.3s ease, box-shadow 0.25s ease; margin-top: 18px;
   }
-  .book-link:hover, .book-link:focus { background: linear-gradient(90deg, #00bfa5, #00ffcc); box-shadow: 0 6px 20px rgba(0, 255, 204, 0.9); }
+  .book-link:hover, .book-link:focus { background: linear-gradient(90deg, #15b7a0, #26f4cd); box-shadow: 0 6px 20px rgba(38, 244, 205, 0.85); }
 
   /* Irodák gombcsoport elválasztó */
   #bookmakerButtons:not(:empty){ margin-top: 6px; margin-bottom: 12px; }
@@ -142,15 +156,15 @@
 
   @media (max-width: 400px) {
     .calculator { padding: 25px 20px; width: 100%; box-shadow: none; border-radius: 12px; }
-    h1 { font-size: 1.5rem; margin-bottom: 18px; }
     label { font-size: 0.9rem; margin-top: 14px; margin-bottom: 6px; }
     input[type="number"], .value-input { font-size: 0.95rem; padding: 10px 12px; width: 100%; }
     button, .book-link { font-size: 1.1rem; padding: 12px 0; }
     .result { font-size: 1rem; margin-top: 22px; }
     #bookmakerButtons{ gap: 3px; }
     .row { margin-top: 5px; flex-wrap: wrap; }
-    .logo { width: 50px; height: 50px; }
-    .logo-wrapper { margin-bottom: 14px; }
+    .brand-header { gap: 8px; margin-bottom: 10px; }
+    .logo { width: 36px; height: 36px; border-radius: 8px; }
+    h1 { font-size: 1.08rem; margin: 0; }
     button.copy-btn { right: 6px; top: 6px; height: 30px; min-width: 34px; }
 
     .guaranteed-row .guaranteed-label,
@@ -264,12 +278,6 @@
   }
   .match-pill .dot{ width:8px; height:8px; border-radius:50%; background:#00ffcc; box-shadow:0 0 8px #00ffcc88; flex:0 0 auto; }
 
-  /* Gyors megnyitás + irodák gombok */
-  #quickBetWrap:empty { display: none; }
-  #quickBetWrap .book-link { margin-top: 18px; }
-  /* KÉRT KIS PLUSZ RÉS a két gombcsoport között */
-  #quickBetWrap { margin-bottom: 10px; }
-
   #bookmakerButtons {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -277,6 +285,27 @@
   }
   #bookmakerButtons .book-link { margin-top: 0; }
   @media (max-width: 400px) { #bookmakerButtons { gap: 10px; } }
+  @media (max-width: 640px) {
+    body {
+      padding: max(10px, env(safe-area-inset-top)) 8px max(12px, env(safe-area-inset-bottom));
+    }
+    .calculator {
+      padding: 18px 14px;
+      border-radius: 14px;
+    }
+    input[type="number"], .value-input {
+      font-size: 16px;
+      min-height: 44px;
+    }
+    #bookmakerButtons {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    #bookmakerButtons .book-link,
+    #calcButton {
+      min-height: 48px;
+    }
+  }
 
   /* Click-to-copy feedback (subtle) */
   .match-pill{ cursor: pointer; user-select: none; outline: none; transition: box-shadow .18s ease, border-color .18s ease, background .18s ease; }
@@ -286,62 +315,10 @@
 </head>
 <body>
   <div class="calculator" role="main" aria-label="Arbitrázs kalkulátor">
-    <!-- Beállítások gomb -->
-    <button class="settings-btn" id="settingsBtn" aria-label="Beállítások">
-      <img src="123.png" alt="Beállítások">
-    </button>
-
-    <!-- Beállítások -->
-    <div class="modal-backdrop" id="settingsBackdrop" hidden></div>
-    <div class="modal" id="settingsModal" hidden>
-      <div class="box">
-        <div class="hdr">
-          <div class="title">Beállítások</div>
-          <span class="close-x" id="settingsClose">✕</span>
-        </div>
-
-        <div class="setting-row">
-          <div style="max-width: calc(100% - 120px);">
-            <div class="lbl">Fogadóirodák automatikus nyitása</div>
-            <div class="desc">Betöltéskor a linkelt irodák megnyitása új fülön.</div>
-          </div>
-          <label class="toggle" title="Be/Ki">
-            <input type="checkbox" id="autoOpenToggle">
-            <span class="track"><span class="knob"></span></span>
-          </label>
-        </div>
-
-        <hr style="border:none; border-top:1px solid rgba(255,255,255,.08); margin:12px 0;">
-
-        <!-- ÚJ: Oldalak megnyitása egyszerre (Gyors megnyitásra) -->
-        <div class="setting-row">
-          <div style="max-width: calc(100% - 120px);">
-            <div class="lbl">Oldalak megnyitása egyszerre</div>
-            <div class="desc">Ha be van kapcsolva, a „Gyors megnyitás” gomb az összes irodát egyszerre nyitja meg új füleken .</div>
-          </div>
-          <label class="toggle" title="Be/Ki">
-            <input type="checkbox" id="openAllToggle">
-            <span class="track"><span class="knob"></span></span>
-          </label>
-        </div>
-
-        <hr style="border:none; border-top:1px solid rgba(255,255,255,.08); margin:12px 0;">
-
-        <div class="setting-row">
-          <div style="max-width: calc(100% - 120px);">
-            <div class="lbl">Segítség</div>
-            <div class="desc">Ha az automatikus nyitás nem működik, olvasd el az útmutatót a Discordon.</div>
-          </div>
-          <a id="guideLink" class="inline-link" href="#" target="_blank" rel="noopener" title="Útmutató">Útmutató</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="logo-wrapper">
+    <div class="brand-header">
       <img src="logo21.png" alt="Logó" class="logo" />
+      <h1>Arbitrázs Kalkulátor</h1>
     </div>
-
-    <h1>Arbitrázs Kalkulátor</h1>
 
     <!-- Hidden mezők -->
     <input type="text" id="odds1Book" hidden>
@@ -359,7 +336,6 @@
     <label for="stake">Teljes tét (Ft)</label>
     <input type="number" id="stake" step="1" min="1" placeholder="pl. 10000" value="10000" />
 
-    <div id="quickBetWrap"></div>
     <div id="bookmakerButtons"></div>
 
     <button id="calcButton" type="button" onclick="initCalculate()" aria-label="Számolás indítása">
@@ -386,9 +362,9 @@
 
   // LS kulcsok
   const LS_KEY_AUTO_OPEN = 'autoOpenLinks';           // betöltéskor automatikus nyitás
-  const LS_KEY_OPEN_ALL_ON_QUICK = 'openAllOnQuick';  // gyors megnyitás gomb nyisson mindent
 
   const SS_KEY_ALREADY_TRIED = 'autoOpen_tried';
+  const ENABLE_SETTINGS = false;
 
   const bookmakers = {
     tippmixpro: { label: "TippMixPro", url: "https://www.tippmixpro.hu/" },
@@ -414,14 +390,6 @@
     rabona:     { label: "Rabona",     url: "https://rabona.com/" }
 
   };
-
-  const QUICK_BET_BASE = (window.location.origin || '').replace(/\/$/, '') + '/gyors';
-  function buildQuickBetLink(urls){
-    if (!urls || !urls.length) return '#';
-    const params = new URLSearchParams();
-    urls.forEach(u => params.append('irodaURL', u));
-    return `${QUICK_BET_BASE}?${params.toString()}`;
-  }
 
   function getCaseInsensitiveParam(nameCI) {
     const params = new URLSearchParams(window.location.search);
@@ -600,13 +568,11 @@
                : 'HUF';
   }
 
-  // Gombok megjelenítése + Gyors megnyitás viselkedése
+  // Gombok megjelenítése
   function showBookmakerButtons() {
     try {
       const bookDiv = document.getElementById("bookmakerButtons");
-      const quickWrap = document.getElementById("quickBetWrap");
       bookDiv.innerHTML = "";
-      if (quickWrap) quickWrap.innerHTML = "";
 
       const books = [];
       const seen  = new Set();
@@ -623,42 +589,6 @@
         books.push({ key, label: bm.label, url });
         seen.add(key);
       });
-
-      if (books.length && quickWrap) {
-        const quick = document.createElement("a");
-        quick.id = "quickBetBtn";
-        quick.className = "book-link";
-        const quickUrls = collectBookmakerUrls();
-        quick.href = buildQuickBetLink(quickUrls); // fallback /gyors (ha a kapcsoló KI van)
-        quick.target = "_blank";
-        quick.rel = "noopener";
-        quick.textContent = "Gyors megnyitás";
-
-        // BE kapcsolva: CSAK a két iroda linkje nyíljon, a /gyors NE!
-        quick.addEventListener('click', (e) => {
-          const enabled = (localStorage.getItem(LS_KEY_OPEN_ALL_ON_QUICK) || 'false') === 'true';
-          if (!enabled) return; // menjen a /gyors linkre normálisan
-
-          e.preventDefault(); // sose nyissuk meg a /gyors oldalt, ha be van kapcsolva
-          const urls = collectBookmakerUrls();
-          if (!urls.length) return;
-
-          let openedCount = 0;
-          urls.forEach(u => {
-            try {
-              const w = window.open(u, '_blank', 'noopener');
-              if (w) openedCount++;
-            } catch {}
-          });
-
-          if (openedCount === 0) {
-            // popup blokkoló – jelzés (de a /gyors így sem nyílik meg)
-            showPopupHint();
-          }
-        });
-
-        quickWrap.appendChild(quick);
-      }
 
       // Iroda gombok
       books.forEach(bm => {
@@ -1078,9 +1008,19 @@
   });
 
   /* =========================
-     Beállítások MODÁL + Auto Open + „Open All on Quick”
+     Beállítások MODÁL + Auto Open
      ========================= */
   (function initSettingsUI(){
+    if (!ENABLE_SETTINGS){
+      const btn = document.getElementById('settingsBtn');
+      const modal = document.getElementById('settingsModal');
+      const backdrop = document.getElementById('settingsBackdrop');
+      if (btn) btn.remove();
+      if (modal) modal.remove();
+      if (backdrop) backdrop.remove();
+      return;
+    }
+
     if (!isDesktopDevice()){
       const btn = document.getElementById('settingsBtn');
       const modal = document.getElementById('settingsModal');
@@ -1096,7 +1036,6 @@
     const backdrop = document.getElementById('settingsBackdrop');
     const closeX = document.getElementById('settingsClose');
     const toggleAuto = document.getElementById('autoOpenToggle');
-    const toggleOpenAll = document.getElementById('openAllToggle');
     const guideLinkEl = document.getElementById('guideLink');
 
     const openSettings = ()=>{
@@ -1114,9 +1053,6 @@
     const savedAuto = (localStorage.getItem(LS_KEY_AUTO_OPEN) || 'false') === 'true';
     toggleAuto.checked = savedAuto;
 
-    const savedOpenAll = (localStorage.getItem(LS_KEY_OPEN_ALL_ON_QUICK) || 'false') === 'true';
-    toggleOpenAll.checked = savedOpenAll;
-
     // Események
     btn.addEventListener('click', openSettings);
     closeX.addEventListener('click', closeSettings);
@@ -1124,7 +1060,6 @@
     document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeSettings(); });
 
     toggleAuto.addEventListener('change', ()=>{ localStorage.setItem(LS_KEY_AUTO_OPEN, toggleAuto.checked ? 'true' : 'false'); });
-    toggleOpenAll.addEventListener('change', ()=>{ localStorage.setItem(LS_KEY_OPEN_ALL_ON_QUICK, toggleOpenAll.checked ? 'true' : 'false'); });
   })();
 
   // Eszköz/nézet detektálás egyszerűsített
@@ -1199,6 +1134,7 @@
 
   // Betöltéskori automatikus nyitás (ha bekapcsolva)
   function maybeAutoOpenLinks(){
+    if (!ENABLE_SETTINGS) return;
     const enabled = (localStorage.getItem(LS_KEY_AUTO_OPEN) || 'false') === 'true';
     if (!enabled) return;
     if (sessionStorage.getItem(SS_KEY_ALREADY_TRIED) === '1') return;
@@ -1489,5 +1425,4 @@
   </script>
 </body>
 </html>
-
 
