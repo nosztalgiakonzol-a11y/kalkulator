@@ -301,43 +301,6 @@
 </head>
 <body>
   <div class="calculator" role="main" aria-label="Arbitrázs kalkulátor">
-    <!-- Beállítások gomb -->
-    <button class="settings-btn" id="settingsBtn" aria-label="Beállítások">
-      <img src="123.png" alt="Beállítások">
-    </button>
-
-    <!-- Beállítások -->
-    <div class="modal-backdrop" id="settingsBackdrop" hidden></div>
-    <div class="modal" id="settingsModal" hidden>
-      <div class="box">
-        <div class="hdr">
-          <div class="title">Beállítások</div>
-          <span class="close-x" id="settingsClose">✕</span>
-        </div>
-
-        <div class="setting-row">
-          <div style="max-width: calc(100% - 120px);">
-            <div class="lbl">Fogadóirodák automatikus nyitása</div>
-            <div class="desc">Betöltéskor a linkelt irodák megnyitása új fülön.</div>
-          </div>
-          <label class="toggle" title="Be/Ki">
-            <input type="checkbox" id="autoOpenToggle">
-            <span class="track"><span class="knob"></span></span>
-          </label>
-        </div>
-
-        <hr style="border:none; border-top:1px solid rgba(255,255,255,.08); margin:12px 0;">
-
-        <div class="setting-row">
-          <div style="max-width: calc(100% - 120px);">
-            <div class="lbl">Segítség</div>
-            <div class="desc">Ha az automatikus nyitás nem működik, olvasd el az útmutatót a Discordon.</div>
-          </div>
-          <a id="guideLink" class="inline-link" href="#" target="_blank" rel="noopener" title="Útmutató">Útmutató</a>
-        </div>
-      </div>
-    </div>
-
     <div class="logo-wrapper">
       <img src="logo21.png" alt="Logó" class="logo" />
     </div>
@@ -388,6 +351,7 @@
   const LS_KEY_AUTO_OPEN = 'autoOpenLinks';           // betöltéskor automatikus nyitás
 
   const SS_KEY_ALREADY_TRIED = 'autoOpen_tried';
+  const ENABLE_SETTINGS = false;
 
   const bookmakers = {
     tippmixpro: { label: "TippMixPro", url: "https://www.tippmixpro.hu/" },
@@ -1034,6 +998,16 @@
      Beállítások MODÁL + Auto Open
      ========================= */
   (function initSettingsUI(){
+    if (!ENABLE_SETTINGS){
+      const btn = document.getElementById('settingsBtn');
+      const modal = document.getElementById('settingsModal');
+      const backdrop = document.getElementById('settingsBackdrop');
+      if (btn) btn.remove();
+      if (modal) modal.remove();
+      if (backdrop) backdrop.remove();
+      return;
+    }
+
     if (!isDesktopDevice()){
       const btn = document.getElementById('settingsBtn');
       const modal = document.getElementById('settingsModal');
@@ -1147,6 +1121,7 @@
 
   // Betöltéskori automatikus nyitás (ha bekapcsolva)
   function maybeAutoOpenLinks(){
+    if (!ENABLE_SETTINGS) return;
     const enabled = (localStorage.getItem(LS_KEY_AUTO_OPEN) || 'false') === 'true';
     if (!enabled) return;
     if (sessionStorage.getItem(SS_KEY_ALREADY_TRIED) === '1') return;
