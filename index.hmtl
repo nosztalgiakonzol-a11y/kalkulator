@@ -6,7 +6,7 @@
   <title>Arbitrázs Kalkulátor – Dark Mode</title>
   <style>
   body {
-    background: linear-gradient(135deg, #121212, #1e1e1e);
+    background: linear-gradient(135deg, #131417, #1f2228);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     min-height: 100vh;
@@ -40,7 +40,7 @@
     border: 3px solid rgba(255,255,255,0.07);
     box-shadow: 0 4px 14px #00ff8855; background: #fff0; display: block; margin: 0 auto;
   }
-  h1 { margin: 0 0 22px; font-weight: 700; color: #00ff88; font-size: 1.8rem; }
+  h1 { margin: 0 0 22px; font-weight: 700; color: #18f39a; font-size: 1.8rem; }
 
   label { display: block; text-align: left; margin-top: 16px; margin-bottom: 8px; font-weight: 600; color: #b0b0b0; font-size: 1rem; }
 
@@ -78,16 +78,16 @@
     font-weight: 700; font-size: 1.2rem; padding: 14px 0; border-radius: 12px; cursor: pointer;
   }
   button {
-    background: linear-gradient(90deg, #00c853, #009624); border: none; color: white;
+    background: linear-gradient(90deg, #00bf67, #009a54); border: none; color: white;
     box-shadow: 0 4px 15px rgba(0, 200, 83, 0.7); transition: background 0.3s ease, box-shadow 0.25s ease;
   }
-  button:hover, button:focus { background: linear-gradient(90deg, #009624, #00c853); box-shadow: 0 6px 20px rgba(0, 200, 83, 0.9); }
+  button:hover, button:focus { background: linear-gradient(90deg, #009a54, #00bf67); box-shadow: 0 6px 20px rgba(0, 191, 103, 0.85); }
 
   .book-link {
-    background: linear-gradient(90deg, #00ffcc, #00bfa5); color: #1e1e1e;
+    background: linear-gradient(90deg, #26f4cd, #15b7a0); color: #1e1e1e;
     box-shadow: 0 4px 15px rgba(0, 255, 204, 0.7); transition: background 0.3s ease, box-shadow 0.25s ease; margin-top: 18px;
   }
-  .book-link:hover, .book-link:focus { background: linear-gradient(90deg, #00bfa5, #00ffcc); box-shadow: 0 6px 20px rgba(0, 255, 204, 0.9); }
+  .book-link:hover, .book-link:focus { background: linear-gradient(90deg, #15b7a0, #26f4cd); box-shadow: 0 6px 20px rgba(38, 244, 205, 0.85); }
 
   /* Irodák gombcsoport elválasztó */
   #bookmakerButtons:not(:empty){ margin-top: 6px; margin-bottom: 12px; }
